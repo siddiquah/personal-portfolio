@@ -16,9 +16,9 @@ export default function Contact() {
       </h2>
 
       <div className="flex justify-center mt-[32px]">
-        <button className="relative inline-block w-40 h-15 px-4 text-lg font-medium transition duration-500 ease-in-out border-green-600 overflow-hidden hover:text-white hover:bg-green-600">
+        <button className="relative inline-block w-40 h-15 px-4 text-lg font-medium transition duration-500 ease-in-out bg-green-600 text-white overflow-hidden hover:text-white hover:bg-green-600">
           Hover me
-          <span className="absolute z-0 w-64 h-64 bg-green-600 top-0 left-0 transform translate-x-full translate-y-full transition duration-700 ease-in-out group-hover:-translate-x-0 group-hover:-translate-y-0"></span>
+          {/* <span className="absolute z-0 w-64 h-64 bg-green-600 top-0 left-0 transform translate-x-full translate-y-full transition duration-700 ease-in-out group-hover:-translate-x-0 group-hover:-translate-y-0"></span> */}
         </button>
       </div>
     </div>
