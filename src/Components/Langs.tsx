@@ -21,9 +21,8 @@ function Langs() {
         <div className="flex-grow border-t-[1px] mx-2"></div>
         <h2
           ref={ref}
-          className={`text-[18px] md:text-[24px] font-bold whitespace-nowrap transition-all duration-700 ease-out ${
-            inView ? transitionStyles.final : transitionStyles.initial
-          }`}
+          className={`text-[18px] md:text-[24px] font-bold whitespace-nowrap transition-all duration-700 ease-out ${inView ? transitionStyles.final : transitionStyles.initial
+            }`}
         >
           Languages
         </h2>
