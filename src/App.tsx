@@ -8,7 +8,8 @@ import Services from "./Components/Services";
 import ProgressBar from "./Components/ProgressBar";
 import Langs from './Components/Langs';
 import Contact from './Components/Contact';
-// import Footer from './Components/Footer';
+import Skills from './Components/Skills';
+import Footer from './Components/Footer';
 
 
 function App() {
@@ -17,13 +18,14 @@ function App() {
       <Header />
       <SideBar />
       <div className="ml-[90px] grid grid-cols-1 md:grid-cols-3">
-        <div className="col-span-2 p-5 mt-[90px]">
+        <div className="col-span-2 mt-[90px]">
           <Introduction />
           <About />
           <Services />
           <Langs />
+          <Skills />
           <Contact />
-          {/* <Footer /> */}
+          <Footer />
         </div>
         <div className="hidden md:block">
           <ProgressBar />

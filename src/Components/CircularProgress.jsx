@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 
 function CircularProgress({ language, target }) {
   const [progress, setProgress] = useState(0);
@@ -6,31 +7,39 @@ function CircularProgress({ language, target }) {
   const circumference = 2 * Math.PI * radius;
   const [offset, setOffset] = useState(circumference);
 
-  const targetProgress = parseInt(target, 10); // Make sure this is properly parsed
+  const { ref, inView } = useInView({
+    triggerOnce: false, // Trigger animation every time the element comes into view
+    threshold: 0.5, // Adjust as necessary based on when you want it to trigger
+  });
 
   useEffect(() => {
-    const increment = 1;
-    const intervalTime = 20;
+    if (inView) {
+      const targetProgress = parseInt(target, 10);
+      const increment = 1;
+      const intervalTime = 20;
+      let currentProgress = 0;
 
-    const interval = setInterval(() => {
-      setProgress((prevProgress) => {
-        const nextProgress = prevProgress + increment;
-        if (nextProgress <= targetProgress) {
-          setOffset(circumference - (circumference * nextProgress) / 100);
-          return nextProgress;
+      const interval = setInterval(() => {
+        currentProgress += increment;
+        if (currentProgress <= targetProgress) {
+          setProgress(currentProgress);
+          setOffset(circumference - (circumference * currentProgress) / 100);
         } else {
           clearInterval(interval);
-          setOffset(circumference - (circumference * targetProgress) / 100);
-          return targetProgress;
         }
-      });
-    }, intervalTime);
+      }, intervalTime);
 
-    return () => clearInterval(interval);
-  }, [circumference, targetProgress]);
+      return () => clearInterval(interval);
+    }
+    // Reset progress when out of view
+    else {
+      setProgress(0);
+      setOffset(circumference);
+    }
+  }, [inView, circumference, target]);
 
   return (
-    <div className="flex flex-col align-middle w-fit">
+    <div ref={ref} className="flex flex-col align-middle w-fit">
       <div className="w-60 h-60 relative mt-8">
         <svg className="w-full h-full" viewBox="0 0 120 120">
           <circle

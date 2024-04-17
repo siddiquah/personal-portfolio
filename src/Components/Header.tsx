@@ -1,4 +1,5 @@
 import React from "react";
+import '../index.css'
 
 function Header() {
     const menu = [
@@ -21,7 +22,7 @@ function Header() {
     ];
 
     return (
-        <div className="flex items-center w-screen justify-between border-b-[1px] fixed bg-white">
+        <div className="flex items-center w-screen justify-between border-b-[1px] fixed bg-white" style={{ position: "fixed", width: "100%", top: 0, zIndex: 1000, background: 'white' }}>
             <div className="w-[90px] h-[90px] bg-black">
                 <img src="/logo.jpg" className="p-7 w-[90px] h-[90px]" />
             </div>

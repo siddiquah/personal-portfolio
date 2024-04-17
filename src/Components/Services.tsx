@@ -1,8 +1,19 @@
 import React from 'react';
 import Strings from '../Shared/Strings';
 import { IoArrowForwardOutline } from 'react-icons/io5';
+import { useInView } from 'react-intersection-observer';
 
 function Services() {
+    const { ref, inView } = useInView({
+        triggerOnce: false, // Animation re-triggers every time it comes into view
+        threshold: 0.5, // Trigger when 50% of the element is visible
+    });
+
+    // Transition styles for appearing effect
+    const transitionStyles = {
+        initial: "translate-y-10 opacity-0",
+        final: "translate-y-0 opacity-100",
+    };
     const servicesList = [
         {
             id: 1,
@@ -26,13 +37,20 @@ function Services() {
 
     return (
         <div className='px-12 mt-12'>
-            <div className='flex items-center'>
-                <div className='w-[20px] h-[9px] bg-green-600 rounded-full'></div>
-                <div className='w-full border-[1px] mx-4 mt-[-2px]'></div>
-                <h2 className='text-[24px] font-bold'>{Strings.SERVICES}</h2>
-                <div className='w-full border-[1px] mt-[-2px] mx-4'></div>
-                <div className='w-[20px] h-[9px] bg-green-600 rounded-full'></div>
+            <div className="flex items-center justify-center flex-wrap">
+                <div className="w-[10px] h-[10px] bg-green-600 rounded-full"></div>
+                <div className="flex-grow border-t-[1px] mx-2"></div>
+                <h2
+                    ref={ref}
+                    className={`text-[18px] md:text-[24px] font-bold whitespace-nowrap transition-all duration-700 ease-out ${inView ? transitionStyles.final : transitionStyles.initial
+                        }`}
+                >
+                    Services
+                </h2>
+                <div className="flex-grow border-t-[1px] mx-2"></div>
+                <div className="w-[10px] h-[10px] bg-green-600 rounded-full"></div>
             </div>
+
 
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 justify-around mt-16'>
                 {servicesList.map((item) => (
