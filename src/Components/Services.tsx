@@ -60,7 +60,7 @@ function Services() {
                         </div>
                         <h2 className='mt-5 font-bold'>{item.title}</h2>
                         <p className='text-gray-400 max-w-xs'>{item.desc}</p>
-                        <IoArrowForwardOutline className="bg-green-500 text-[35px] p-2 text-white rounded-full cursor-pointer hover:scale-110 transition-all" />
+                        {/* <IoArrowForwardOutline className="bg-green-500 text-[35px] p-2 text-white rounded-full cursor-pointer hover:scale-110 transition-all" /> */}
                     </div>
                 ))}
             </div>
